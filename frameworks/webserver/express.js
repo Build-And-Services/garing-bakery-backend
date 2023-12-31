@@ -7,7 +7,7 @@ function expressConfig (app, express) {
   app.use('/product', express.static(path.join(__dirname, 'public', 'product-images')));
   app.use(cors())
   app.use(bodyParser.urlencoded({ extended: true }));
-  app.use(bodyParser.json())
+  app.use(bodyParser.json());
 }
 
 module.exports = expressConfig
