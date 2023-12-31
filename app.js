@@ -1,14 +1,15 @@
 const express = require('express');
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
-
 const app = express();
+require('module-alias/register')
+const expressConfig = require('@frameworks/express')
+const serverConfig = require('@frameworks/server')
 
-app.get('/', async (req, res) => {
-  const data = await prisma.user.findMany();
-  return res.status(200).json({
-    user: data,
-  });
-});
+expressConfig(app, express)
 
-app.listen(3000, () => console.log('Server listen on http://localhost:3000'));
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'Hello World'
+  })
+})
+
+serverConfig(app)

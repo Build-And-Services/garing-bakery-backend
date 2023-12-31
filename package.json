@@ -4,11 +4,16 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "dev": "nodemon app.js",
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./ --quiet --fix",
     "format": "prettier --write .",
     "prepare": "husky install"
+  },
+  "_moduleAliases": {
+    "@app": "app",
+    "@frameworks": "frameworks/webserver"
   },
   "keywords": [
     "backend",
