@@ -1,7 +1,7 @@
-function serverConfig (app) {
+function serverConfig(app) {
   function start() {
-    const host = process.env.BASE_URL || 'http://localhost'
-    const port = process.env.PORT || 3000
+    const host = process.env.BASE_URL || 'http://localhost';
+    const port = process.env.PORT || 3000;
     try {
       app.listen(port, () => console.log(`Server is listening on ${host}:${port}`));
     } catch (error) {
@@ -9,6 +9,6 @@ function serverConfig (app) {
     }
   }
   start();
-};
+}
 
-module.exports = serverConfig
+module.exports = serverConfig;
