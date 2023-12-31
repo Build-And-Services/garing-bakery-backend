@@ -1,0 +1,49 @@
+{
+  "name": "garing-bakery-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./ --quiet --fix",
+    "format": "prettier --write .",
+    "prepare": "husky install"
+  },
+  "keywords": [
+    "backend",
+    "RESTAPI",
+    "cashier",
+    "clean",
+    "architecture",
+    "prisma",
+    "express",
+    "nodejs"
+  ],
+  "author": "buildandservice",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.7.1",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "module-alias": "^2.2.3",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.6.5"
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "nodemon": "^3.0.2",
+    "prettier": "^3.1.1"
+  },
+  "lint-staged": {
+    "*.{js}": "npm run lint",
+    "*.js": "npm run format"
+  }
+}
