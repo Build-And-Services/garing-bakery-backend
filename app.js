@@ -5,11 +5,4 @@ const expressConfig = require('@frameworks/express');
 const serverConfig = require('@frameworks/server');
 
 expressConfig(app, express);
-
-app.get('/', (req, res) => {
-  res.status(200).json({
-    message: 'Hello World',
-  });
-});
-
 serverConfig(app);

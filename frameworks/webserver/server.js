@@ -5,7 +5,7 @@ function serverConfig(app) {
     try {
       app.listen(port, () => console.log(`Server is listening on ${host}:${port}`));
     } catch (error) {
-      console.log(error);
+      console.log('ini test', error);
     }
   }
   start();

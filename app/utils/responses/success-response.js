@@ -1,7 +1,8 @@
 function successResponse(statusCode, res, data, message) {
   return res.status(statusCode).json({
-    message,
     success: true,
+    error: false,
+    message,
     data,
   });
 }
