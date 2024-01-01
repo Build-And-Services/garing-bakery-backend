@@ -2,6 +2,7 @@ const { errorResponse } = require('../utils/responses');
 const { CustomAPIError } = require('../utils/errors');
 
 function errorMidlleware(err, req, res, _next) {
+  console.error(err.message);
   if (err instanceof CustomAPIError) {
     return errorResponse(err.statusCode, res, err.message);
   }
