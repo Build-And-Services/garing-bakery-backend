@@ -9,7 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./ --quiet --fix",
     "format": "prettier --write .",
-    "prepare": "husky install && husky add .husky/pre-commit \"npx lint-staged\""
+    "prepare": "husky install && husky add .husky/pre-commit \"npx lint-staged\"",
+    "seed": "node prisma/seed.js"
   },
   "_moduleAliases": {
     "@app": "app",
