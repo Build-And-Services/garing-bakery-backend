@@ -37,7 +37,7 @@ class UserController {
       StatusCodes.NON_AUTHORITATIVE_INFORMATION,
       res,
       null,
-      MESSAGE_SUCCESS.create
+      MESSAGE_SUCCESS.remove
     );
   }
 }
