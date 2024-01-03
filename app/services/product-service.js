@@ -61,14 +61,14 @@ class ProductService {
   }
 
   static async createProduct(data) {
-    const category = await client.categories.findFirst({
+    const category = await client.categories.findUnique({
       where: {
         id: data.category_id,
       },
     });
 
     if (!category) {
-      throw new BadRequestError('The category_id is not match to any category.');
+      throw new BadRequestError('The category_id is not match to any categories.');
     }
 
     const product = await client.products.create({ data });
@@ -76,14 +76,34 @@ class ProductService {
   }
 
   static async updateProduct(id, data) {
-    const product = await client.products.update({
+    const product = await client.products.findUnique({
+      where: {
+        id: parseInt(id),
+      },
+    });
+
+    if (!product) {
+      throw new BadRequestError('The product_id does not exist.');
+    }
+
+    const category = await client.categories.findUnique({
+      where: {
+        id: data.category_id,
+      },
+    });
+
+    if (!category) {
+      throw new BadRequestError('The category_id is not match to any categories.');
+    }
+
+    const updatedProduct = await client.products.update({
       where: {
         id: parseInt(id),
       },
       data: data,
     });
 
-    return product;
+    return updatedProduct;
   }
 
   static async deleteProduct(id) {
