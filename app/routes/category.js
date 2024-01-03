@@ -7,4 +7,9 @@ router
   .get(asyncWrapper(CategoryController.getCategories))
   .post(asyncWrapper(CategoryController.createCategories));
 
+router
+  .route('/:id')
+  .put(asyncWrapper(CategoryController.updateCategory))
+  .delete(asyncWrapper(CategoryController.deleteCategory));
+
 module.exports = router;

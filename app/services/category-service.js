@@ -23,6 +23,27 @@ class CategoryService {
     const category = await client.categories.create({ data });
     return category;
   }
+
+  static async updateCategory(id, data) {
+    const category = await client.categories.update({
+      where: {
+        id: parseInt(id),
+      },
+      data: data,
+    });
+
+    return category;
+  }
+
+  static async deleteCategory(id) {
+    const category = await client.categories.delete({
+      where: {
+        id: parseInt(id),
+      },
+    });
+
+    return category;
+  }
 }
 
 module.exports = CategoryService;
