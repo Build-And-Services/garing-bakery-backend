@@ -61,6 +61,16 @@ class ProductService {
   }
 
   static async createProduct(data) {
+    const category = await client.categories.findFirst({
+      where: {
+        id: data.category_id,
+      },
+    });
+
+    if (!category) {
+      throw new BadRequestError('The category_id is not match to any category.');
+    }
+
     const product = await client.products.create({ data });
     return product;
   }
