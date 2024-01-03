@@ -1,3 +1,4 @@
+const { BadRequestError } = require('../utils/errors');
 const client = require('./../../config/prisma-config');
 class ProductService {
   static async getProducts() {
@@ -24,6 +25,39 @@ class ProductService {
     }));
 
     return productsFormatted;
+  }
+
+  static async getProductById(id) {
+    const product = await client.products.findFirst({
+      where: {
+        id: parseInt(id),
+      },
+      select: {
+        id: true,
+        name: true,
+        image: true,
+        product_code: true,
+        purchase_price: true,
+        selling_price: true,
+        stock: true,
+        category: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    });
+
+    if (!product) {
+      throw new BadRequestError('Product not found.');
+    }
+
+    const formattedProduct = {
+      ...product,
+      category: product.category ? product.category.name : null,
+    };
+
+    return formattedProduct;
   }
 
   static async createProduct(data) {

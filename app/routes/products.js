@@ -9,6 +9,7 @@ router
 
 router
   .route('/:id')
+  .get(asyncWrapper(ProductController.getProductById))
   .put(asyncWrapper(ProductController.updateProduct))
   .delete(asyncWrapper(ProductController.deleteProduct));
 

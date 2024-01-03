@@ -10,6 +10,12 @@ class ProductController {
     return successResponse(StatusCodes.OK, res, data, MESSAGE_SUCCESS.get);
   }
 
+  static async getProductById(req, res) {
+    const id = req.params.id;
+    const data = await ProductService.getProductById(id);
+    return successResponse(StatusCodes.OK, res, data, MESSAGE_SUCCESS.get);
+  }
+
   static async createProduct(req, res) {
     const { name, image, stock, product_code, purchase_price, selling_price, category_id } =
       req.body;
