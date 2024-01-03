@@ -28,7 +28,7 @@ class ProductService {
   }
 
   static async getProductById(id) {
-    const product = await client.products.findFirst({
+    const product = await client.products.findUnique({
       where: {
         id: parseInt(id),
       },
@@ -49,7 +49,7 @@ class ProductService {
     });
 
     if (!product) {
-      throw new BadRequestError('Product not found.');
+      throw new BadRequestError('The product_id does not exist.');
     }
 
     const formattedProduct = {
@@ -107,13 +107,23 @@ class ProductService {
   }
 
   static async deleteProduct(id) {
-    const product = await client.products.delete({
+    const product = await client.products.findUnique({
       where: {
         id: parseInt(id),
       },
     });
 
-    return product;
+    if (!product) {
+      throw new BadRequestError('The product_id does not exist.');
+    }
+
+    const deletedProduct = await client.products.delete({
+      where: {
+        id: parseInt(id),
+      },
+    });
+
+    return deletedProduct;
   }
 }
 
